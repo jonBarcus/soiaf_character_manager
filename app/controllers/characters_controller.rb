@@ -7,6 +7,12 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.new(character_params)
+
+    if @character.save
+      redirect_to("/")
+    else
+      render("/characters/new")
+    end
   end
 
 
