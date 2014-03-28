@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: soiaf_character_manager_development
   pool: 5
-  username: soiaf_character_manager
+  username: jonathanbarcus
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: soiaf_character_manager_test
   pool: 5
-  username: soiaf_character_manager
+  username: jonathanbarcus
   password:
 
 production:
@@ -56,5 +56,5 @@ production:
   encoding: unicode
   database: soiaf_character_manager_production
   pool: 5
-  username: soiaf_character_manager
+  username: jonathanbarcus
   password:
