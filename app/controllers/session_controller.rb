@@ -4,6 +4,7 @@ class SessionController < ApplicationController
 
   # NEW takes them to the log in page
   def new
+
   end
 
   # CREATE will actually find the username(or not) in the database
@@ -13,9 +14,9 @@ class SessionController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
 
-    if user & user.authenticate(params[:password])
+    if user && user.authenticate(params[:password])
 
-      session[:user_id] = user_id
+      session[:user_id] = user.id
       redirect_to("/")
     else
       render(:new)
