@@ -3,16 +3,20 @@
 <% if logged_in? %>
 
 Welcome, <%= current_user.name %>!
-
 <% if current_user.characters.empty? %>
   <p>You have no created characters</p>
 <% else %>
   <h3>These are your created characters</h3>
     <ul>
       <% current_user.characters.each do |character| %>
-        <li>"<%= character.name %>" of House <%= character.house %></ul>
+        <li><%= character.name %> of House <%= character.house.name %></li>
       <% end %>
     </ul>
+  <h3>These are your created houses</h3>
+    <ul>
+      <% current_user.houses.each do |house| %>
+        <li><%= house.name %> in <%= house.region.name %></li>
+        <% end %>
     <% end %>
 
 

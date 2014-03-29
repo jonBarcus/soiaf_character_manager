@@ -10,5 +10,3 @@ the_reach = Region.create({name: "The Reach"})
 the_stormlands = Region.create({name: "The Stormlands"})
 dorne = Region.create({name: "Dorne"})
 the_seven_kingdoms = Region.create({name: "The Seven Kingdoms"})
-
-no_house = House.create({name: "No House", region_id: 9})
