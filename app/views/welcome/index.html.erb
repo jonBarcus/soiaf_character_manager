@@ -1,8 +1,20 @@
 <h1>You've accomplished something tangible!</h1>
-
+<!-- User is logged in successfully -->
 <% if logged_in? %>
 
 Welcome, <%= current_user.name %>!
+
+<% if current_user.characters.empty? %>
+  <p>You have no created characters</p>
+<% else %>
+  <h3>These are your created characters</h3>
+    <ul>
+      <% current_user.characters each do |character| %>
+        <li>"<%= character.name %>" of House <%= character.house %></ul>
+      <% end %>
+    </ul>
+    <% end %>
+
 
 <a href="/characters/new">Create a character</a>
 <a href="/houses/new">Create a house</a>
@@ -11,6 +23,8 @@ Welcome, <%= current_user.name %>!
 
 <a href="/logout">Logout</a>
 
+
+<!-- User is not logged in -->
 <% else %>
 <a href="/users/new">Sign up for CharMan</a>
 
