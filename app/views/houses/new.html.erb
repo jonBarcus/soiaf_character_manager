@@ -1,0 +1,9 @@
+<h1>Create a house</h1>
+
+<%= form_for(@house) do |f| %>
+  <%= f.label(:region_id) %>
+  <%= f.collection_select(:region_id, @regions, :id, :name) %>
+  <%= f.label(:name) %>
+  <%= f.text_field(:name) %>
+  <%= f.submit %>
+<% end %>
