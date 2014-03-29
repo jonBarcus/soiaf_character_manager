@@ -9,7 +9,7 @@ Welcome, <%= current_user.name %>!
 <% else %>
   <h3>These are your created characters</h3>
     <ul>
-      <% current_user.characters each do |character| %>
+      <% current_user.characters.each do |character| %>
         <li>"<%= character.name %>" of House <%= character.house %></ul>
       <% end %>
     </ul>

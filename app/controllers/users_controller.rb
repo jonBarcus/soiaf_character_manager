@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      House.create({region_id: 9, name: "No House", user_id: @user.id})
       redirect_to("/")
     else
       render(:new)

@@ -43,7 +43,8 @@ class CharactersController < ApplicationController
       :thievery,
       :warfare,
       :will,
-      :is_alive
+      :is_alive,
+      :user_id
       )
   end
 

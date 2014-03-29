@@ -49,5 +49,6 @@
   <%= f.number_field(:will) %>
   <%= f.label(:is_alive) %>
   <%= f.check_box(:is_alive) %>
+  <%= f.hidden_field(:user_id, :value => current_user.id) %>
   <%= f.submit %>
 <% end %>

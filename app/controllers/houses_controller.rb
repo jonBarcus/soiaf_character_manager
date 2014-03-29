@@ -21,7 +21,8 @@ class HousesController < ApplicationController
   def house_params
     params.require(:house).permit(
       :region_id,
-      :name
+      :name,
+      :user_id
       )
   end
 
