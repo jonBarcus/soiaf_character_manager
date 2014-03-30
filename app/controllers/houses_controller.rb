@@ -1,5 +1,9 @@
 class HousesController < ApplicationController
 
+  def index
+    @houses = current_user.houses
+  end
+
   def new
     @regions = Region.all
     @house = House.new
@@ -13,6 +17,18 @@ class HousesController < ApplicationController
     else
       render("/houses/new")
     end
+  end
+
+  def show
+    @houses = House.find_by({user_id: current_user.id})
+    binding.pry
+  end
+
+  def destroy
+    binding.pry
+    house = House.find_by({id: params[:id]})
+    house.delete
+    redirect_to("/houses")
   end
 
 

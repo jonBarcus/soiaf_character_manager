@@ -1,0 +1,10 @@
+<h1>Your houses</h1>
+
+<% @houses.each do |house| %>
+  <li>
+    <%= house.name %> in <%= house.region.name %>
+    <%= form_for(house, { :method => :delete }) do |f| %>
+    <%= f.submit "Delete" %>
+    <% end %>
+  </li>
+  <% end %>
