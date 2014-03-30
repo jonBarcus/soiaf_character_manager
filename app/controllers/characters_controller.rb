@@ -1,5 +1,9 @@
 class CharactersController < ApplicationController
 
+  def index
+    @characters = current_user.characters
+  end
+
   def new
     @houses = House.all
     @character = Character.new
@@ -13,6 +17,12 @@ class CharactersController < ApplicationController
     else
       render("/characters/new")
     end
+  end
+
+  def destroy
+    character = Character.find_by({id: params[:id]})
+    character.delete
+    redirect_to("/characters")
   end
 
 

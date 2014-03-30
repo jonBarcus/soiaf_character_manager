@@ -1,0 +1,12 @@
+<h1>These are your characters</h1>
+
+<a href="/">Home</a>
+
+<% @characters.each do |character| %>
+  <li>
+    <%= character.name %> of <%= character.house.name %>
+    <%= form_for(character, { :method => :delete }) do |f| %>
+    <%= f.submit "Delete" %>
+    <% end %>
+  </li>
+  <% end %>

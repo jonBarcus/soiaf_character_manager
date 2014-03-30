@@ -21,11 +21,9 @@ class HousesController < ApplicationController
 
   def show
     @houses = House.find_by({user_id: current_user.id})
-    binding.pry
   end
 
   def destroy
-    binding.pry
     house = House.find_by({id: params[:id]})
     house.delete
     redirect_to("/houses")

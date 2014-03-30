@@ -12,17 +12,23 @@ Welcome, <%= current_user.name %>!
         <li><%= character.name %> of House <%= character.house.name %></li>
       <% end %>
     </ul>
+    <% end %>
+    <% if current_user.houses.empty? %>
+      <p>You have no created houses</p>
+      <% else %>
   <h3>These are your created houses</h3>
     <ul>
       <% current_user.houses.each do |house| %>
         <li><%= house.name %> in <%= house.region.name %></li>
         <% end %>
     <% end %>
+    <br>
 
 
 <a href="/characters/new">Create a character</a>
 <a href="/houses/new">Create a house</a>
 <a href="/houses">View your created houses</a>
+<a href="/characters">View your created characters</a>
 
 <br>
 
