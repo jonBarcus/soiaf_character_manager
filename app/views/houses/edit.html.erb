@@ -1,0 +1,9 @@
+<a href="/houses">Go Back</a>
+
+<%= form_for(@house) do |f| %>
+  <%= f.label(:region_id) %>
+  <%= f.collection_select(:region_id, @regions, :id, :name) %>
+  <%= f.label(:name) %>
+  <%= f.text_field(:name) %>
+  <%= f.submit %>
+  <% end %>

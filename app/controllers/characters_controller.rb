@@ -23,6 +23,11 @@ class CharactersController < ApplicationController
     @character = Character.find_by(id: params[:id])
   end
 
+  def edit
+    @houses = current_user.houses
+    @character = Character.find_by(id: params[:id])
+  end
+
   def destroy
     character = Character.find_by({id: params[:id]})
     character.delete

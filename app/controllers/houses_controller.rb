@@ -23,6 +23,23 @@ class HousesController < ApplicationController
     @house = House.find_by({user_id: current_user.id})
   end
 
+  def edit
+    @regions = Region.all
+    @house = House.find_by({id: params[:id]})
+  end
+
+  def update
+    @house = House.find_by({id: params[:id]})
+
+    @house.update(house_params)
+
+    if @house.save
+      redirect_to house_path(@house)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     house = House.find_by({id: params[:id]})
     house.delete
