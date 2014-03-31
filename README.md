@@ -15,8 +15,8 @@ This project is has the goal of allowing GM/Narrators to manager their player an
 - Allow account log in (_completed_)
 - Allow character deletion (_completed_)
 - Allow house deletion (_completed_)
-- Allow character edit
-- Allow house edit
+- Allow character edit (_completed_)
+- Allow house edit (_completed_)
 - Allow export of character sheet to Google Drive
 - Allow export of house sheet to Google Drive
 - Put lipstick on the pig (unlikely for Version 1.0)
