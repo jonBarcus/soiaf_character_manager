@@ -59,5 +59,7 @@ group :development, :test do
 # one liners to test common rails functionality
 # https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-matchers'
+# will provide annotation to files
+  gem 'annotate', ">=2.6.0"
 end
 
