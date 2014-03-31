@@ -20,7 +20,7 @@ class HousesController < ApplicationController
   end
 
   def show
-    @houses = House.find_by({user_id: current_user.id})
+    @house = House.find_by({user_id: current_user.id})
   end
 
   def destroy
