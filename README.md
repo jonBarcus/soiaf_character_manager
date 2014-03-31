@@ -19,3 +19,4 @@ This project is has the goal of allowing GM/Narrators to manager their player an
 - Allow house edit
 - Allow export of character sheet to Google Drive
 - Allow export of house sheet to Google Drive
+- Put lipstick on the pig (unlikely for Version 1.0)
