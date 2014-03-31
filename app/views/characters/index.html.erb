@@ -4,7 +4,8 @@
 
 <% @characters.each do |character| %>
   <li>
-    <%= character.name %> of <%= character.house.name %>
+    <%= link_to(character.name, action: :show, id: character.id) %>
+    of <%= character.house.name %>
     <%= form_for(character, { :method => :delete }) do |f| %>
     <%= f.submit "Delete" %>
     <% end %>
