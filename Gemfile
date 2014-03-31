@@ -59,6 +59,8 @@ group :development, :test do
 # one liners to test common rails functionality
 # https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-matchers'
+# ERD gem
+  gem 'rails-erd', '~> 1.1.0'
 
 end
 
