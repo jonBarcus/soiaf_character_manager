@@ -4,7 +4,7 @@
 
 [Link to PivotalTracker](https://www.pivotaltracker.com/s/projects/1047504)
 
-ERD will be provided later (work in progress)
+[ERD V1.0 is here](https://github.com/jonBarcus/soiaf_character_manager/blob/master/erd.pdf)
 
 This project is has the goal of allowing GM/Narrators to manager their player and non-player characters for their Song of Ice and Fire RPG games.
 
