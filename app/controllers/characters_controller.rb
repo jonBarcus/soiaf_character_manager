@@ -34,6 +34,10 @@ class CharactersController < ApplicationController
     redirect_to("/characters")
   end
 
+def export
+  @character = Character.find_by(id: params[:id])
+
+end
 
   private
 

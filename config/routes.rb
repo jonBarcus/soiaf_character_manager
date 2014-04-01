@@ -23,7 +23,7 @@ SoiafCharacterManager::Application.routes.draw do
   get "/logout" => "session#destroy"
 
   # attempting export to google drive
-  get "/characters/:id/export" => "characters#export"
+  post "/characters/:id/export" => "characters#export"
 
   # Example resource route with options:
   #   resources :products do
