@@ -5,7 +5,9 @@ class CharactersController < ApplicationController
   end
 
   def new
-    @houses = House.all
+        # loads the current user's houses to make them available
+    # in the drop down
+    @houses = current_user.houses
     @character = Character.new
   end
 
@@ -24,6 +26,8 @@ class CharactersController < ApplicationController
   end
 
   def edit
+    # loads the current user's houses to make them available
+    # in the drop down
     @houses = current_user.houses
     @character = Character.find_by(id: params[:id])
   end
@@ -34,6 +38,8 @@ class CharactersController < ApplicationController
     redirect_to("/characters")
   end
 
+# this allows users to export the current character
+# to their Google Drive
 def export
   @character = Character.find_by(id: params[:id])
 
