@@ -11,7 +11,14 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-
+  def require_admin
+    if logged_in? && current_user.admin
+      return true
+    else
+      flash[:error] = "Admin rights required"
+      redirect_to(root_path)
+    end
+  end
 
   helper_method(:current_user, :logged_in?)
 
