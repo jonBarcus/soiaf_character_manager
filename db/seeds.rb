@@ -19,3 +19,5 @@ admin_user = User.create({email: "test@test.com", username: "admin",
 normal_user = User.create({email: "normal@normal.com", username: "normal",
                         name: "normal user", password: "normal",
                         password_confirmation: "normal", is_admin: false})
+
+no_house = House.create({name: "No House", region_id: 9, user_id: 2})
