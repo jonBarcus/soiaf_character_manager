@@ -2,6 +2,7 @@
 <a href="/characters">Go Back</a>
 
 <%= link_to "edit_character", edit_character_path(@character) %>
+<%= link_to "export_character", export_character_path(@character) %>
 
 <ul>Alive?:  <%=@character.is_alive%></ul>
 <ul>Name: <%=@character.name%></ul>
