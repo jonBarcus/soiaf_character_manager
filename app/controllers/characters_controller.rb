@@ -39,9 +39,14 @@ class CharactersController < ApplicationController
   end
 
 # this allows users to export the current character
-# to their Google Drive
+# to their Google Drive via OAuth
+# OAuth2:  https://github.com/intridea/oauth2
+# Google Drive Ruby Gem:  https://github.com/gimite/google-drive-ruby
 def export
   @character = Character.find_by(id: params[:id])
+
+  #creates client per instructions at:
+  # http://gimite.net/doc/google-drive-ruby/GoogleDrive.html#method-c-login_with_oauth
 
   client = OAuth2::Client.new(
     ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
@@ -53,11 +58,14 @@ def export
     :scope =>
         "https://docs.google.com/feeds/")
 
+  # filler passwords hoping to get application to run again
+  # will remove once OAuth is working and will create a session
+  # with GoogleDrive.login_with_oauth(auth_token.token)
+  blank = "filler@email.com"
+  blank2 = "filler_password"
 
 
-
-
-  drive_session = GoogleDrive.login_with_oauth(auth_url)
+  drive_session = GoogleDrive.login(blank, blank2)
 
   drive_session.create_spreadsheet("main_test")
 
