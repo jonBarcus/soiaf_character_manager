@@ -27,4 +27,6 @@
 <ul>Warfare:  <%=@character.warfare%></ul>
 <ul>Will:  <%=@character.will%></ul>
 
+<a href="https://accounts.google.com/o/oauth2/auth/?scope=https://www.googleapis.com/auth/plus.login">Sign in to Google</a>
+
 <%= button_to "Export to Google", {:action => "export", :controller => "characters"} %>
