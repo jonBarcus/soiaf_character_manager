@@ -43,10 +43,21 @@ class CharactersController < ApplicationController
 def export
   @character = Character.find_by(id: params[:id])
 
-  google_user = #username here
-  google_pass = #password here
+  client = OAuth2::Client.new(
+    ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
+    :site => "https://accounts.google.com",
+    :token_url => "/o/oauth2/token",
+    :authorize_url => "/o/oauth2/auth")
+  auth_url = client.auth_code.authorize_url(
+    :redirect_uri => "http://127.0.0.1/3000",
+    :scope =>
+        "https://docs.google.com/feeds/")
 
-  drive_session = GoogleDrive.login(google_user, google_pass)
+
+
+
+
+  drive_session = GoogleDrive.login_with_oauth(auth_url)
 
   drive_session.create_spreadsheet("main_test")
 
