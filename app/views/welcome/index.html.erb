@@ -2,6 +2,10 @@
 <!-- User is logged in successfully -->
 <% if logged_in? %>
 
+  <!-- Insert conditional regarding Admin rights -->
+  <!-- Expected options to display ALL characters and -->
+  <!-- ALL houses in the database -->
+
 Welcome, <%= current_user.name %>!
 <% if current_user.characters.empty? %>
   <p>You have no created characters</p>
