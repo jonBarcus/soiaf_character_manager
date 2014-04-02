@@ -2,6 +2,8 @@
 
 ####First Attempt (Let's call it _Version 0.5_)
 
+[Link to Heroku App](http://stark-harbor-5953.herokuapp.com/)
+
 [Link to PivotalTracker](https://www.pivotaltracker.com/s/projects/1047504)
 
 [ERD V1.0 is here](https://github.com/jonBarcus/soiaf_character_manager/blob/master/erd.pdf)
