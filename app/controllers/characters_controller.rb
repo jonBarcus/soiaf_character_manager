@@ -49,23 +49,27 @@ def export
   # http://gimite.net/doc/google-drive-ruby/GoogleDrive.html#method-c-login_with_oauth
 
   client = OAuth2::Client.new(
-    ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
+    ENV['GOOGLE_LOCAL_ID'], ENV['GOOGLE_LOCAL_SECRET'],
     :site => "https://accounts.google.com",
     :token_url => "/o/oauth2/token",
     :authorize_url => "/o/oauth2/auth")
   auth_url = client.auth_code.authorize_url(
-    :redirect_uri => "http://127.0.0.1/3000",
-    :scope =>
-        "https://docs.google.com/feeds/")
+    :redirect_uri => "http://localhost:3000",
+        :scope =>
+        "https://docs.google.com/feeds/ " +
+        "https://docs.googleusercontent.com/ " +
+        "https://spreadsheets.google.com/feeds/")
 
-  # filler passwords hoping to get application to run again
-  # will remove once OAuth is working and will create a session
-  # with GoogleDrive.login_with_oauth(auth_token.token)
-  blank = "filler@email.com"
-  blank2 = "filler_password"
+  # gets authorization code from Google
+  auth_code = params[:authenticity_token]
+  # removes the = from the end of the code
+  auth_code.slice!("=")
 
+  # should get the authorization token
+  auth_token = client.auth_code.get_token(
+    auth_code, :redirect_uri => "http://localhost:3000")
 
-  drive_session = GoogleDrive.login(blank, blank2)
+  drive_session = GoogleDrive.login_with_oauth(auth_token.token)
 
   drive_session.create_spreadsheet("main_test")
 
