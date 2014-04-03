@@ -1,8 +1,8 @@
 #Song of Ice and Fire Character Manager
 
-####First Attempt (Let's call it _Version 0.5_)
+####First Attempt (Let's call it _Version 0.1.0_)
 
-[Link to Heroku App](http://stark-harbor-5953.herokuapp.com/)
+[Link to App on Heroku](http://stark-harbor-5953.herokuapp.com/)
 
 [Link to PivotalTracker](https://www.pivotaltracker.com/s/projects/1047504)
 
