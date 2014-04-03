@@ -54,11 +54,10 @@ def export
     :token_url => "/o/oauth2/token",
     :authorize_url => "/o/oauth2/auth")
   auth_url = client.auth_code.authorize_url(
-    :redirect_uri => "http://localhost:3000",
+    :redirect_uri => "urn:ietf:wg:oauth:2.0:oob",
         :scope =>
         "https://docs.google.com/feeds/ " +
-        "https://docs.googleusercontent.com/ " +
-        "https://spreadsheets.google.com/feeds/")
+        "https://docs.googleusercontent.com/")
 
   # gets authorization code from Google
   auth_code = params[:authenticity_token]
@@ -67,10 +66,13 @@ def export
 
   # should get the authorization token
   auth_token = client.auth_code.get_token(
-    auth_code, :redirect_uri => "http://localhost:3000")
+    auth_code, :redirect_uri => "urn:ietf:wg:oauth:2.0:oob")
 
+  # create a session of Google Drive where it uses OAuth2
   drive_session = GoogleDrive.login_with_oauth(auth_token.token)
 
+  # input a variable for naming the sheet
+  # probably call it the character's name
   drive_session.create_spreadsheet("main_test")
 
   session_spreadsheet = drive_session.spreadsheet_by_title("main_test")
