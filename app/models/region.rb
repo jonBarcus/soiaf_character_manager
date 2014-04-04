@@ -12,4 +12,5 @@ class Region < ActiveRecord::Base
 
   has_many :houses
 
+  # need to establish validations
 end
