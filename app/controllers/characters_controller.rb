@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
   end
 
   def new
-        # loads the current user's houses to make them available
+    # loads the current user's houses to make them available
     # in the drop down
     @houses = current_user.houses
     @character = Character.new

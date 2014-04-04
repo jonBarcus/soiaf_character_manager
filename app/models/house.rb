@@ -12,4 +12,6 @@ class House < ActiveRecord::Base
   has_many :characters
   belongs_to :user
   belongs_to :region
+
+  # need to establish validations
 end

@@ -35,4 +35,6 @@
 class Character < ActiveRecord::Base
   belongs_to :house
 
+  # need to establish validations
+
 end

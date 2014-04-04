@@ -19,4 +19,6 @@ class User < ActiveRecord::Base
 
   has_many :houses
   has_many :characters, :through => :houses
+
+  # need to establish validations
 end
