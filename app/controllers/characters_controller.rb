@@ -42,6 +42,10 @@ class CharactersController < ApplicationController
 # to their Google Drive via OAuth
 # OAuth2:  https://github.com/intridea/oauth2
 # Google Drive Ruby Gem:  https://github.com/gimite/google-drive-ruby
+
+# eventually should move this to the characters model
+# or perhaps another model entirely, as we're going to
+# want to be able to do this with houses too
 def export
   @character = Character.find_by(id: params[:id])
 
