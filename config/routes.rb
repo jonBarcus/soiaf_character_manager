@@ -24,6 +24,8 @@ SoiafCharacterManager::Application.routes.draw do
 
   # attempting export to google drive
   post "/characters/:id/export" => "characters#export"
+  # oauth callback
+  get "/oauth" => "characters#oauth"
 
   # Example resource route with options:
   #   resources :products do

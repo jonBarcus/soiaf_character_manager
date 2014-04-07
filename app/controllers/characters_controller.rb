@@ -23,6 +23,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find_by(id: params[:id])
+    session[:char_id] = @character.id
   end
 
   def edit
@@ -38,6 +39,15 @@ class CharactersController < ApplicationController
     redirect_to("/characters")
   end
 
+  def oauth
+
+    verification_code = params[:code]
+    token_result = HTTParty.post("https://accounts.google.com/o/oauth2/token", :body => {:code => verification_code, :grant_type => "authorization_code"})
+    binding.pry
+    redirect_to("/characters/#{session[:char_id]}")
+  end
+
+
 # this allows users to export the current character
 # to their Google Drive via OAuth
 # OAuth2:  https://github.com/intridea/oauth2
@@ -52,25 +62,28 @@ def export
   #creates client per instructions at:
   # http://gimite.net/doc/google-drive-ruby/GoogleDrive.html#method-c-login_with_oauth
 
-  client = OAuth2::Client.new(
-    ENV['GOOGLE_LOCAL_ID'], ENV['GOOGLE_LOCAL_SECRET'],
-    :site => "https://accounts.google.com",
-    :token_url => "/o/oauth2/token",
-    :authorize_url => "/o/oauth2/auth")
-  auth_url = client.auth_code.authorize_url(
-    :redirect_uri => "urn:ietf:wg:oauth:2.0:oob",
-        :scope =>
-        "https://docs.google.com/feeds/ " +
-        "https://docs.googleusercontent.com/")
+  # client = OAuth2::Client.new(
+  #   ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
+  #   :site => "https://accounts.google.com",
+  #   :token_url => "/o/oauth2/token",
+  #   :authorize_url => "/o/oauth2/auth")
+  # auth_url = client.auth_code.authorize_url(
+  #   :redirect_uri => "http://127.0.0.1:3000/oauth",
+  #       :scope =>
+  #       "https://docs.google.com/feeds/ " +
+  #       "https://docs.googleusercontent.com/")
+  # binding.pry
 
-  # gets authorization code from Google
-  auth_code = params[:authenticity_token]
-  # removes the = from the end of the code
-  auth_code.slice!("=")
+  # # gets authorization code from Google
+  # auth_code = params[:authenticity_token]
+  # # removes the = from the end of the code
+  # auth_code.slice!("=")
 
-  # should get the authorization token
-  auth_token = client.auth_code.get_token(
-    auth_code, :redirect_uri => "urn:ietf:wg:oauth:2.0:oob")
+  # # should get the authorization token
+  # auth_token = client.auth_code.get_token(
+  #   auth_code, :redirect_uri => "http://127.0.0.1:3000/oauth")
+
+
 
   # create a session of Google Drive where it uses OAuth2
   drive_session = GoogleDrive.login_with_oauth(auth_token.token)
