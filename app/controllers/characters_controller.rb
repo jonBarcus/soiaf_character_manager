@@ -39,6 +39,7 @@ class CharactersController < ApplicationController
     redirect_to("/characters")
   end
 
+  # pending a conversation with Phil, still not working
   def oauth
 
     verification_code = params[:code]
