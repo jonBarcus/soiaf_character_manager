@@ -44,10 +44,11 @@ Welcome, <%= current_user.name %>!
 
 <!-- User is not logged in -->
 <% else %>
+<div id="login">
   <a href="/users/new">Sign up for CharMan</a>
 
   <a href="/session/new">Login</a>
-
+</div> <!-- login/signup -->
 <% end %>
 
 </div> <!-- wrapper -->
