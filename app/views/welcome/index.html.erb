@@ -1,5 +1,8 @@
-<h1>Welcome to the SoIaF RPG Character Manager</h1>
+<div id="wrapper">
+<div id="header">
+  <h1>Welcome to the SoIaF RPG Character Manager</h1>
 <!-- User is logged in successfully -->
+</div> <!-- header -->
 <% if logged_in? %>
 
   <!-- Insert conditional regarding Admin rights -->
@@ -46,3 +49,9 @@ Welcome, <%= current_user.name %>!
   <a href="/session/new">Login</a>
 
 <% end %>
+
+</div> <!-- wrapper -->
+
+<div id="footer">
+  Totally Still Working on This
+</div> <!-- footer -->
