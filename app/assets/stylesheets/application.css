@@ -26,13 +26,22 @@
 
 
   text-align: center;
-  background-color: blue;
+  background-color: #606060;
 
 }
 
 #login {
 
-  text-align: right;
   display: inline-block;
+  border: 1px solid black;
+
+}
+
+#login a {
+
+  text-decoration: none;
+  background-color: #323848;
+  color: white;
+  border: 1px solid black;
 
 }
