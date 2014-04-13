@@ -40,7 +40,7 @@ class CharactersController < ApplicationController
   end
 
   # pending a conversation with Phil, still not working
-  def oauth
+  def oauth(params)
 
     # verification_code = params[:code]
     # token_result = HTTParty.post("https://accounts.google.com/o/oauth2/token", :body => {:code => verification_code, :grant_type => "authorization_code"})
