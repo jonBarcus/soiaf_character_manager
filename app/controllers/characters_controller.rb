@@ -42,10 +42,24 @@ class CharactersController < ApplicationController
   # pending a conversation with Phil, still not working
   def oauth
 
-    verification_code = params[:code]
-    token_result = HTTParty.post("https://accounts.google.com/o/oauth2/token", :body => {:code => verification_code, :grant_type => "authorization_code"})
-    binding.pry
-    redirect_to("/characters/#{session[:char_id]}")
+    # verification_code = params[:code]
+    # token_result = HTTParty.post("https://accounts.google.com/o/oauth2/token", :body => {:code => verification_code, :grant_type => "authorization_code"})
+    # binding.pry
+    # redirect_to("/characters/#{session[:char_id]}")
+    base_url = "https://accounts.google.com/o/oauth2/token"
+
+    headers  = { "user-agent"   => "jonathanbarcus",
+                 "content-type" => "application/x-www-form-urlencoded" }
+
+    data     = { code:          params["code"],
+                 redirect_uri:  "http://localhost:3000/oauth",
+                 client_id:     GOOGLE_CLIENT_ID,
+                 scope:         params["scope"],
+                 client_secret: GOOGLE_CLIENT_SECRET,
+                 grant_type:    "authorization_code" }
+
+  # RESPONSE returns hash
+    response = HTTParty.post(base_url, :headers => headers, :body => data)
   end
 
 
@@ -69,20 +83,41 @@ def export
   #   :token_url => "/o/oauth2/token",
   #   :authorize_url => "/o/oauth2/auth")
   # auth_url = client.auth_code.authorize_url(
-  #   :redirect_uri => "http://127.0.0.1:3000/oauth",
+  #   :redirect_uri => "http://localhost:3000/oauth",
   #       :scope =>
   #       "https://docs.google.com/feeds/ " +
   #       "https://docs.googleusercontent.com/")
-  # binding.pry
 
-  # # gets authorization code from Google
-  # auth_code = params[:authenticity_token]
-  # # removes the = from the end of the code
-  # auth_code.slice!("=")
+  base_url = "https://accounts.google.com/o/oauth2/token"
 
-  # # should get the authorization token
-  # auth_token = client.auth_code.get_token(
-  #   auth_code, :redirect_uri => "http://127.0.0.1:3000/oauth")
+  headers = {
+            "user-agent" => "jonathanbarcus",
+            }
+
+  data = {
+            code:   params["code"],
+            redirect_uri:  "http://localhost:3000/oauth2",
+            client_id: ENV['GOOGLE_CLIENT_ID'],
+            scope: params["scope"],
+            client_secret: ENV['GOOGLE_CLIENT_SECRET'],
+            grant_type: "authorization_code"
+          }
+
+  # redirect_to("https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/drive&redirect_uri=http://localhost:3000/oauth&response_type=code&client_id=#{ENV['GOOGLE_CLIENT_ID']}")
+  HTTParty.post(base_url, :headers => headers, :body => data)
+  binding.pry
+
+
+  # token_result = HTTParty.post("https://accounts.google.com/o/oauth2/token", :body => {:code => verification_code, :grant_type => "authorization_code"})
+
+  # gets authorization code from Google
+  auth_code = params[:authenticity_token]
+  # removes the = from the end of the code
+  auth_code.slice!("=")
+
+  # should get the authorization token
+  auth_token = client.auth_code.get_token(
+    auth_code, :redirect_uri => "http://127.0.0.1:3000/oauth")
 
 
 
