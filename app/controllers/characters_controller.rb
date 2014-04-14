@@ -1,7 +1,6 @@
 class CharactersController < ApplicationController
 
   def index
-    binding.pry
     @characters = current_user.characters
   end
 
