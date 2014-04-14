@@ -6,7 +6,7 @@ module GoogleOauth
 
     base_url = "https://accounts.google.com/o/oauth2/token"
     redirect_uri = "http://localhost:3000/oauth"
-
+    binding.pry
     headers =   { "user-agent" => "jonathanbarcus",
                  "content-type" => "application/x-www-form-urlencoded" }
 
