@@ -16,8 +16,17 @@ module GoogleOauth
               scope: params["scope"],
               client_secret: ENV['GOOGLE_CLIENT_SECRET'],
               grant_type: "authorization_code" }
+    puts "DATA:"
+    puts data.inspect
+
+    puts
+    puts "ENV:"
+    puts ENV.inspect
 
     response = HTTParty.post(base_url, :headers => headers, :body => data)
+
+    puts "got Google API response #{response.inspect}"
+    response['access_token']
 
   end
 

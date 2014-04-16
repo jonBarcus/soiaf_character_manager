@@ -42,6 +42,7 @@ class CharactersController < ApplicationController
 # pending a conversation with Phil, still not working
 def oauth
   session[:auth_token] = GoogleOauth.oauth(params)
+  puts "saving auth token #{session[:auth_token]}"
   redirect_to("/characters/#{session[:char_id]}")
 end
 
@@ -77,18 +78,19 @@ def export
   # token_result = HTTParty.post("https://accounts.google.com/o/oauth2/token", :body => {:code => verification_code, :grant_type => "authorization_code"})
 
   # gets authorization code from Google
-  auth_code = params[:authenticity_token]
+  # auth_code = params[:authenticity_token]
   # removes the = from the end of the code
-  auth_code.slice!("=")
+  # auth_code.slice!("=")
 
   # should get the authorization token
-  auth_token = client.auth_code.get_token(
-    auth_code, :redirect_uri => "http://localhost:3000/oauth")
+  # auth_token = client.auth_code.get_token(
+  #   auth_code, :redirect_uri => "http://localhost:3000/oauth")
 
 
 
   # create a session of Google Drive where it uses OAuth2
-  drive_session = GoogleDrive.login_with_oauth(auth_token.token)
+  drive_session = GoogleDrive.login_with_oauth(session[:auth_token])
+  binding.pry
 
   # input a variable for naming the sheet
   # probably call it the character's name
