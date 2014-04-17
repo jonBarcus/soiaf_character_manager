@@ -6,6 +6,7 @@ module GoogleOauth
 
     base_url = "https://accounts.google.com/o/oauth2/token"
     redirect_uri = "http://localhost:3000/oauth"
+    scope = "https://www.googleapis.com/auth/drive.file"
 
     headers = { "user-agent" => "jonathanbarcus",
                 "content-type" => "application/x-www-form-urlencoded" }
@@ -13,7 +14,7 @@ module GoogleOauth
     data = { code: params["code"],
               redirect_uri: redirect_uri,
               client_id: ENV['GOOGLE_CLIENT_ID'],
-              scope: params["scope"],
+              scope: scope,
               client_secret: ENV['GOOGLE_CLIENT_SECRET'],
               grant_type: "authorization_code" }
     puts "DATA:"
