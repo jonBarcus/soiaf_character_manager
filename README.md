@@ -2,7 +2,7 @@
 
 ####First Attempt (Let's call it _Version 0.1.0_)
 
-[Link to App on Heroku](http://stark-harbor-5953.herokuapp.com/)
+[Link to App on Heroku](http://soiafcharmanager.herokuapp.com/)
 
 [Link to PivotalTracker](https://www.pivotaltracker.com/s/projects/1047504)
 
