@@ -4,7 +4,7 @@ class SessionController < ApplicationController
 
   # NEW takes them to the log in page
   def new
-
+    @failed_auth = false
   end
 
   # CREATE will actually find the username(or not) in the database
@@ -19,6 +19,7 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
       redirect_to("/")
     else
+      @failed_auth = true
       render(:new)
     end
   end
